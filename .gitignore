@@ -1,0 +1,12 @@
+mynotes.txt
+.obsidian/
+build/
+cmake-build-*/
+out/
+*.exe
+*.obj
+*.o
+*.out
+.vscode/
+.vs/
+.idea/
