@@ -15,8 +15,8 @@ namespace zimat {
         std::vector<double> data;
 
     public:
-        matrix();
-        ~matrix();
+        matrix() = default;
+        ~matrix() = default;
 
         matrix(int rows, int cols, int base_numeric = 1)
         {

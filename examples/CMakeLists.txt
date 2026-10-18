@@ -1,3 +1,3 @@
-add_executable(example_main main.cpp)
+add_executable(basic_usage basic_usage.cpp)
 
-target_link_libraries(example_main PRIVATE zimat)
+target_link_libraries(basic_usage PRIVATE zimat)

@@ -1,10 +1,9 @@
-#include "../include/zimat.hpp"
+#include "zimat.hpp"
 
 
 int main(){
 
-    zimat::matrix(2,2) a;
-
-
+    zimat::matrix a(2,2);
+    a(2,2) = 5;
     return 0;
 }
