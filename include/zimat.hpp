@@ -9,7 +9,7 @@
 //include "core/traits.hpp"
 
 
-//include "core/matrix.hpp"
+#include "core/matrix.hpp" // IWYU pragma: export
 
 
 //include "ops/arithmetic.hpp"
