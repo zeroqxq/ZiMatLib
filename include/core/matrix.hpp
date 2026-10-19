@@ -32,6 +32,42 @@ namespace zimat {
             return this->data[index];
         }
 
+        // GETTERS AND SETTERS
+        int get_rows()
+        {
+            return this->rows;
+        }
+
+        int get_cols()
+        {
+            return this->cols;
+        }
+
+        std::vector<double> get_data()
+        {
+            return this->data;
+        }
+
+        int get_base_numeric()
+        {
+            return this->base_numeric;
+        }
+
+
+        void set_rows(int rows)
+        {
+            this->rows = rows;
+        }
+
+        void set_cols(int cols)
+        {
+            this->cols = cols;
+        }
+
+        void set_base_numeric(int base_numeric)
+        {
+            this->base_numeric = base_numeric;
+        }   
     };     
 }
 
