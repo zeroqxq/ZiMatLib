@@ -53,7 +53,7 @@ namespace zimat {
 
         void set_base_numeric(int base_numeric)
         {
-            this->base_numeric_ = base_numeric;
+            base_numeric_ = base_numeric;
         }   
     };     
 }
