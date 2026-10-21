@@ -1,18 +1,16 @@
 #pragma once
 #include <vector>
 
-
-
 namespace zimat {
 
 
     class matrix
     {
     private:
-        int rows;
-        int cols;
-        int base_numeric;
-        std::vector<double> data;
+        int rows_;
+        int cols_;
+        int base_numeric_;
+        std::vector<double> data_;
 
     public:
         matrix() = default;
@@ -20,53 +18,42 @@ namespace zimat {
 
         matrix(int rows, int cols, int base_numeric = 1)
         {
-            this->rows = rows;
-            this->cols = cols;
-            this->data.resize(rows * cols);
-            this->base_numeric=base_numeric;
+            rows_ = rows;
+            cols_ = cols;
+            data_.resize(rows * cols);
+            base_numeric_=base_numeric;
         }
 
         double&  operator()(int row, int col) 
         {
-            int index = (row - this->base_numeric) * this->cols + (col - this->base_numeric);
-            return this->data[index];
+            int index = (row - base_numeric_) * cols_ + (col - base_numeric_);
+            return data_[index];
         }
 
         // GETTERS AND SETTERS
         int get_rows()
         {
-            return this->rows;
+            return rows_;
         }
 
         int get_cols()
         {
-            return this->cols;
+            return cols_;
         }
 
         std::vector<double> get_data()
         {
-            return this->data;
+            return data_;
         }
 
         int get_base_numeric()
         {
-            return this->base_numeric;
-        }
-
-
-        void set_rows(int rows)
-        {
-            this->rows = rows;
-        }
-
-        void set_cols(int cols)
-        {
-            this->cols = cols;
+            return base_numeric_;
         }
 
         void set_base_numeric(int base_numeric)
         {
-            this->base_numeric = base_numeric;
+            this->base_numeric_ = base_numeric;
         }   
     };     
 }
