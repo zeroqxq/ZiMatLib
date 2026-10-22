@@ -15,7 +15,7 @@ namespace zimat {
 
     public:
 
-        matrix(int rows, int cols, int base_numeric = 1)
+        matrix(T1 rows, T1 cols, T1 base_numeric = 1)
         {
             rows_ = rows;
             cols_ = cols;
@@ -44,12 +44,12 @@ namespace zimat {
         }
 
         // GETTERS AND SETTERS
-        T1 get_rows()
+        T1 get_rows() const
         {
             return rows_;
         }
 
-        T1 get_cols()
+        T1 get_cols() const
         {
             return cols_;
         }
