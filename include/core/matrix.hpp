@@ -23,7 +23,7 @@ namespace zimat {
             base_numeric_=base_numeric;
         }
 
-        double&  operator()(int row, int col) 
+        T& operator()(int row, int col) 
         {
             int index = (row - base_numeric_) * cols_ + (col - base_numeric_);
             return data_[index];
@@ -47,7 +47,7 @@ namespace zimat {
             return cols_;
         }
 
-        std::vector<double> get_data()
+        T get_data()
         {
             return data_;
         }
