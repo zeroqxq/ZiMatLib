@@ -54,14 +54,14 @@ namespace zimat {
             return cols_;
         }
 
-        const std::vector<T>& get_data()
+        const std::vector<T>& get_data() const
         {
             return data_;
         }
 
         
 
-        T1 get_base_numeric()
+        T1 get_base_numeric() const
         {
             return base_numeric_;
         }
