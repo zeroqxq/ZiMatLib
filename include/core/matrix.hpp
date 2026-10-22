@@ -4,17 +4,16 @@
 namespace zimat {
 
 
+    template<typename T>
     class matrix
     {
     private:
-        int rows_;
-        int cols_;
-        int base_numeric_;
-        std::vector<double> data_;
+        int rows_ = 0;
+        int cols_ = 0;
+        int base_numeric_ = 1;
+        std::vector<T> data_;
 
     public:
-        matrix() = default;
-        ~matrix() = default;
 
         matrix(int rows, int cols, int base_numeric = 1)
         {
