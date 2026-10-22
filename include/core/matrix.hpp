@@ -30,6 +30,16 @@ namespace zimat {
             return data_[index];
         }
 
+        void resize(int rows, int cols, int base_nimeric = 1){
+            rows_ = rows;
+            cols_ = cols;
+            data_.resize(rows * cols);
+            base_numeric_ = base_nimeric;
+             
+
+            
+        }
+
         // GETTERS AND SETTERS
         int get_rows()
         {
@@ -50,6 +60,7 @@ namespace zimat {
         {
             return base_numeric_;
         }
+
 
         void set_base_numeric(int base_numeric)
         {
