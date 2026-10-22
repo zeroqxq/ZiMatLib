@@ -3,7 +3,8 @@
 
 int main(){
 
-    zimat::matrix a(2,2);
+    zimat::matrix<int> a(2,2);
     a(2,2) = 5;
+    
     return 0;
 }
