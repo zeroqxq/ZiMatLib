@@ -34,10 +34,7 @@ namespace zimat {
             rows_ = rows;
             cols_ = cols;
             data_.resize(rows * cols);
-            base_numeric_ = base_nimeric;
-             
-
-            
+            base_numeric_ = base_nimeric;  
         }
 
         // GETTERS AND SETTERS
