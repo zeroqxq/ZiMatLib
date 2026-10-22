@@ -4,13 +4,13 @@
 namespace zimat {
 
 
-    template<typename T>
+    template<typename T, typename T1=int >
     class matrix
     {
     private:
-        int rows_ = 0;
-        int cols_ = 0;
-        int base_numeric_ = 1;
+        T1 rows_ = 0;
+        T1 cols_ = 0;
+        T1 base_numeric_ = 1;
         std::vector<T> data_;
 
     public:
@@ -23,42 +23,51 @@ namespace zimat {
             base_numeric_=base_numeric;
         }
 
-        T& operator()(int row, int col) 
+        T& operator()(T1 rows, T1 cols) 
         {
-            int index = (row - base_numeric_) * cols_ + (col - base_numeric_);
+            auto index = (rows - base_numeric_) * cols_ + (cols - base_numeric_);
             return data_[index];
         }
 
-        void resize(int rows, int cols, int base_nimeric = 1){
+        const T& operator()(T1 rows, T1 cols) const
+        {
+            const auto index = (rows - base_numeric_) * cols_
+                            + (cols - base_numeric_);
+            return data_[index];
+        }
+
+        void resize(T1 rows, T1 cols, T1 base_numeric = 1){
             rows_ = rows;
             cols_ = cols;
             data_.resize(rows * cols);
-            base_numeric_ = base_nimeric;  
+            base_numeric_ = base_numeric;  
         }
 
         // GETTERS AND SETTERS
-        int get_rows()
+        T1 get_rows()
         {
             return rows_;
         }
 
-        int get_cols()
+        T1 get_cols()
         {
             return cols_;
         }
 
-        T get_data()
+        const std::vector<T>& get_data()
         {
             return data_;
         }
 
-        int get_base_numeric()
+        
+
+        T1 get_base_numeric()
         {
             return base_numeric_;
         }
 
 
-        void set_base_numeric(int base_numeric)
+        void set_base_numeric(T1 base_numeric)
         {
             base_numeric_ = base_numeric;
         }   
