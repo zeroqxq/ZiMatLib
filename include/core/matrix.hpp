@@ -14,11 +14,12 @@ namespace zimat {
         std::vector<T> data_;
 
     public:
-
+        matrix();
         matrix(T1 rows, T1 cols, T1 base_numeric = 1);
 
         T& operator()(T1 rows, T1 cols);
         const T& operator()(T1 rows, T1 cols) const;
+        matrix operator+(const matrix & other) const;
 
         void resize(T1 rows, T1 cols, T1 base_numeric = 1);
 
@@ -87,6 +88,14 @@ namespace zimat {
     void matrix<T,T1>::set_base_numeric(T1 base_numeric)
     {
         base_numeric_ = base_numeric;
+    }
+    
+    template <typename T, typename T1>
+    matrix<T,T1>::matrix() 
+    {
+        rows_ = 0;
+        cols_ = 0;
+        base_numeric_= 1;
     } 
     
 
