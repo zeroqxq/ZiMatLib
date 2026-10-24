@@ -16,7 +16,9 @@ namespace zimat {
 
         temp.data_.resize(temp.rows_*temp.cols_);
 
-        for (i)
+        for (size_t i = 0; i < temp.data_.size(); ++i) {
+            temp.data_[i] = this->data_[i] + other.data_[i];
+        }
         return temp;
     }
     
