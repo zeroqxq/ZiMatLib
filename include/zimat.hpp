@@ -12,7 +12,7 @@
 #include "core/matrix.hpp" // IWYU pragma: export
 
 
-//include "ops/arithmetic.hpp"
+#include "ops/arithmetic.hpp" // IWYU pragma: export
 //include "ops/matrix_mul.hpp"
 
 
