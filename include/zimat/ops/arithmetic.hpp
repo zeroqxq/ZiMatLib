@@ -1,5 +1,5 @@
 #pragma once
-#include "./core/matrix.hpp"
+#include "../core/matrix.hpp"
 #include <cstddef>
 
 

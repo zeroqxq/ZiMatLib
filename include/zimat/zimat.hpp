@@ -22,3 +22,5 @@
 
 
 //#include "utils/io.hpp"
+#include "linalg/determinant.hpp" // IWYU pragma: export
+
