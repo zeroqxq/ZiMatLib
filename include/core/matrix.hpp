@@ -21,6 +21,7 @@ namespace zimat {
         const T& operator()(T1 rows, T1 cols) const;
         matrix operator+(const matrix & other) const;
         matrix operator-(const matrix & other) const;
+        matrix operator*(const matrix & other) const;
 
         void resize(T1 rows, T1 cols, T1 base_numeric = 1);
 
