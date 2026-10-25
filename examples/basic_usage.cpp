@@ -20,9 +20,11 @@ int main(){
 
     zimat::matrix<int> c = a * b;
     zimat::matrix<int> d = c * 2; 
+    zimat::matrix<int> e = d / 2; 
 
     std::cout << c(1,1) << std::endl;
     std::cout << d(1,1) << std::endl;
+    std::cout << e(1,1) << std::endl;
 
     return 0;
 }

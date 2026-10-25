@@ -81,4 +81,19 @@ namespace zimat {
     }
 
 
+    template <typename T, typename T1>
+    inline matrix<T,T1> matrix<T,T1>::operator/(const T& other) const
+    {
+
+        matrix<T> temp(this->rows_, this->cols_, this->base_numeric_);
+
+        for (size_t i = 0; i < temp.data_.size(); ++i){
+            temp.data_[i] = this->data_[i] / other;
+        }
+
+        return temp;
+    }
+
+
+
 }
