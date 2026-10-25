@@ -4,7 +4,7 @@
 namespace zimat {
 
 
-    template<typename T, typename T1=int >
+    template<typename T, typename T1=int>
     class matrix
     {
     private:
@@ -20,6 +20,7 @@ namespace zimat {
         T& operator()(T1 rows, T1 cols);
         const T& operator()(T1 rows, T1 cols) const;
         matrix operator+(const matrix & other) const;
+        matrix operator-(const matrix & other) const;
 
         void resize(T1 rows, T1 cols, T1 base_numeric = 1);
 
