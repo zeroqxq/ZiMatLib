@@ -20,7 +20,17 @@ int main(){
 
     zimat::matrix<int> c = a * b;
     zimat::matrix<int> d = c * 2; 
-    zimat::matrix<int> e = d / 2; 
+    zimat::matrix<int> e = d / 2;
+
+    zimat::matrix<int> h(3,3);
+    for (int i = 1; i <= h.get_rows(); ++i) {
+        for (int j = 1; j <= h.get_cols(); ++j) {
+            h(i,j) = 1;
+        }
+    }
+
+    h(1,1) = 2;
+    h(3,3) = 2;
 
 
     //output full matrix c
@@ -51,6 +61,16 @@ int main(){
 
     //output determinant for e with changes
     std::cout << e.det() << std::endl;
+
+
+    //output full matrix h with changes
+    std::cout << "|" << h(1,1) << " " << h(1,2) << " " << h(1,3) << "|" << std::endl;
+    std::cout << "|" << h(2,1) << " " << h(2,2) << " " << h(2,3) << "|" << std::endl;
+    std::cout << "|" << h(3,1) << " " << h(3,2) << " " << h(3,3) << "|" << std::endl;
+
+    //output determinant for h with changes
+    std::cout << h.det() << std::endl;
+
 
     return 0;
 }
