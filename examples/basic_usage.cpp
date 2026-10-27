@@ -1,9 +1,7 @@
 #include "zimat/zimat.hpp"
 #include <iostream>
 
-
 int main(){
-
     zimat::matrix<int> a(2,2);
     for (int i = 1; i <= a.get_rows(); ++i) {
         for (int j = 1; j <= a.get_cols(); ++j) {
@@ -29,8 +27,13 @@ int main(){
         }
     }
 
-    h(1,1) = 2;
-    h(3,3) = 2;
+    zimat::matrix<int> z(2,2);
+
+    z(1,1) = 1;
+    z(1,2) = 2;
+    z(2,1) = 3;
+    z(2,2) = 4;
+    z = z.t();
 
 
     //output full matrix c
@@ -70,6 +73,10 @@ int main(){
 
     //output determinant for h with changes
     std::cout << h.det() << std::endl;
+
+    //output full matrix z with transpose
+    std::cout << "|" << z(1,1) << " " << z(1,2) << "|" << std::endl;
+    std::cout << "|" << z(2,1) << " " << z(2,2) << "|" << std::endl;
 
 
     return 0;

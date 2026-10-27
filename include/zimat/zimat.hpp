@@ -13,7 +13,7 @@
 
 
 #include "ops/arithmetic.hpp" // IWYU pragma: export
-//include "ops/matrix_mul.hpp"
+#include "ops/transpose.hpp"  // IWYU pragma: export
 
 
 //#include "linalg/determinant.hpp"
