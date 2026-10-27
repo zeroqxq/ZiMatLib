@@ -33,7 +33,7 @@ int main(){
     z(1,2) = 2;
     z(2,1) = 3;
     z(2,2) = 4;
-    z = z.t();
+    z = z.transpose();
 
 
     //output full matrix c

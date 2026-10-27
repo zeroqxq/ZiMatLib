@@ -14,4 +14,10 @@ namespace zimat {
         }
         return temp;
     }
+
+    template<typename T, typename T1>
+    matrix<T,T1> matrix<T,T1>::transpose() const {
+        return this->t();
+    }
+    
 }
