@@ -3,29 +3,17 @@
 
 int main(){
     zimat::matrix<int> a(2,2);
-    for (int i = 1; i <= a.get_rows(); ++i) {
-        for (int j = 1; j <= a.get_cols(); ++j) {
-            a(i,j) = 1;
-        }
-    }
+    a = a.fill(1);
 
     zimat::matrix<int> b(2,2);
-    for (int i = 1; i <= b.get_rows(); ++i) {
-        for (int j = 1; j <= b.get_cols(); ++j) {
-            b(i,j) = 2;
-        }
-    }
+    b = b.fill(2);
 
-    zimat::matrix<int> c = a * b;
+    zimat::matrix<int> c = a + b;
     zimat::matrix<int> d = c * 2; 
     zimat::matrix<int> e = d / 2;
 
     zimat::matrix<int> h(3,3);
-    for (int i = 1; i <= h.get_rows(); ++i) {
-        for (int j = 1; j <= h.get_cols(); ++j) {
-            h(i,j) = 1;
-        }
-    }
+    h.fill(1);
 
     zimat::matrix<int> z(2,2);
 

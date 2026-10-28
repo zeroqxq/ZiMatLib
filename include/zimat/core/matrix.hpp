@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <algorithm>
 
 namespace zimat {
 
@@ -17,6 +18,7 @@ namespace zimat {
         matrix();
         matrix(T1 rows, T1 cols, T1 base_numeric = 1);
 
+        matrix& fill(const T& value);
         T& operator()(T1 rows, T1 cols);
         const T& operator()(T1 rows, T1 cols) const;
         matrix operator+(const matrix & other) const;
@@ -34,9 +36,13 @@ namespace zimat {
         // GETTERS AND SETTERS
         T1 get_rows() const;
         T1 get_cols() const;
+        T1 cols() const;
+        T1 rows() const;
         const std::vector<T>& get_data() const;
+        const std::vector<T>& data() const;
 
         T1 get_base_numeric() const;
+        T1 base_numeric() const;
         void set_base_numeric(T1 base_numeric);
     };     
 
@@ -73,9 +79,20 @@ namespace zimat {
     T1 matrix<T,T1>::get_rows() const {
             return rows_;
     }
+
+    template <typename T, typename T1>
+    T1 matrix<T,T1>::rows() const {
+            return rows_;
+    }
         
     template <typename T, typename T1>
     T1 matrix<T,T1>::get_cols() const
+    {
+        return cols_;
+    }
+
+    template <typename T, typename T1>
+    T1 matrix<T,T1>::cols() const
     {
         return cols_;
     }
@@ -87,7 +104,19 @@ namespace zimat {
     }
 
     template <typename T, typename T1>
+    const std::vector<T>& matrix<T,T1>::data() const
+    {
+        return data_;
+    }
+
+    template <typename T, typename T1>
     T1 matrix<T,T1>::get_base_numeric() const
+    {
+        return base_numeric_;
+    }
+
+    template <typename T, typename T1>
+    T1 matrix<T,T1>::base_numeric() const
     {
         return base_numeric_;
     }
@@ -104,7 +133,13 @@ namespace zimat {
         rows_ = 0;
         cols_ = 0;
         base_numeric_= 1;
-    } 
+    }
+
+    template <typename T, typename T1>
+    matrix<T,T1>& matrix<T,T1>::fill(const T& value) {
+        std::fill(data_.begin(), data_.end(), value);
+        return *this;
+    }
     
 
 }
