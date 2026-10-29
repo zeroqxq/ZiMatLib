@@ -15,10 +15,12 @@ namespace zimat {
         std::vector<T> data_;
 
     public:
+
+        // constructors
         matrix();
         matrix(T1 rows, T1 cols, T1 base_numeric = 1);
 
-        matrix& fill(const T& value);
+        // operators
         T& operator()(T1 rows, T1 cols);
         const T& operator()(T1 rows, T1 cols) const;
         matrix operator+(const matrix & other) const;
@@ -26,12 +28,21 @@ namespace zimat {
         matrix operator*(const matrix & other) const;
         matrix operator*(const T& other) const;
         matrix operator/(const T& other) const;
+        
+        // simple methods
+        matrix& fill(const T& value);
         T det() const;
         matrix t() const;
         matrix transpose() const;
-
-
         void resize(T1 rows, T1 cols, T1 base_numeric = 1);
+
+        // bool methods
+        bool empty() const;
+        bool is_empty() const;
+        bool zeroqxq() const; // ^_^ 
+        bool zeros() const;
+        bool is_zeros() const;
+        bool is_square() const;
 
         // GETTERS AND SETTERS
         T1 get_rows() const;
@@ -40,10 +51,10 @@ namespace zimat {
         T1 rows() const;
         const std::vector<T>& get_data() const;
         const std::vector<T>& data() const;
-
         T1 get_base_numeric() const;
         T1 base_numeric() const;
         void set_base_numeric(T1 base_numeric);
+
     };     
 
     template <typename T, typename T1>
@@ -140,6 +151,7 @@ namespace zimat {
         std::fill(data_.begin(), data_.end(), value);
         return *this;
     }
+
     
 
 }

@@ -14,6 +14,7 @@
 
 #include "ops/arithmetic.hpp" // IWYU pragma: export
 #include "ops/transpose.hpp"  // IWYU pragma: export
+#include "ops/predicates.hpp" // IWYU pragma: export
 
 
 //#include "linalg/determinant.hpp"
