@@ -5,8 +5,8 @@
 
 namespace zimat {
 
-    template <typename T, typename T1>
-    inline matrix<T,T1> matrix<T,T1>::operator+(const matrix<T, T1> & other) const
+    template <typename T>
+    inline matrix<T> matrix<T>::operator+(const matrix<T> & other) const
     {
 
         if (this->rows_ != other.rows_ and this->cols_ != other.cols_) {
@@ -22,8 +22,8 @@ namespace zimat {
     }
 
 
-    template <typename T, typename T1>
-    inline matrix<T,T1> matrix<T,T1>::operator-(const matrix<T, T1> & other) const
+    template <typename T>
+    inline matrix<T> matrix<T>::operator-(const matrix<T> & other) const
     {
 
         if (this->rows_ != other.rows_ and this->cols_ != other.cols_) {
@@ -40,8 +40,8 @@ namespace zimat {
     }
 
 
-    template <typename T, typename T1>
-    inline matrix<T,T1> matrix<T,T1>::operator*(const matrix<T, T1> & other) const
+    template <typename T>
+    inline matrix<T> matrix<T>::operator*(const matrix<T> & other) const
     {
 
         if (this->cols_ != other.rows_) {
@@ -67,8 +67,8 @@ namespace zimat {
     
 
 
-    template <typename T, typename T1>
-    inline matrix<T,T1> matrix<T,T1>::operator*(const T& other) const
+    template <typename T>
+    inline matrix<T> matrix<T>::operator*(const T& other) const
     {
 
         matrix<T> temp(this->rows_, this->cols_, this->base_numeric_);
@@ -81,8 +81,8 @@ namespace zimat {
     }
 
 
-    template <typename T, typename T1>
-    inline matrix<T,T1> matrix<T,T1>::operator/(const T& other) const
+    template <typename T>
+    inline matrix<T> matrix<T>::operator/(const T& other) const
     {
 
         matrix<T> temp(this->rows_, this->cols_, this->base_numeric_);

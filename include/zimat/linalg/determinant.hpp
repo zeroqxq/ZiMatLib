@@ -3,8 +3,8 @@
 
 namespace zimat {
 
-    template<typename T, typename T1>
-    T matrix<T,T1>::det() const {
+    template<typename T>
+    T matrix<T>::det() const {
         if (this->rows_ == 1 and this ->cols_ == 1){
             return data_[0];
         }

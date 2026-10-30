@@ -2,8 +2,8 @@
 
 namespace zimat {
 
-    template<typename T, typename T1>
-    T matrix<T,T1>::trace() const {
+    template<typename T>
+    T matrix<T>::trace() const {
         if (rows_ == cols_){
         }
     }
