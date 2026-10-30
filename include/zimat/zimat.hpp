@@ -15,13 +15,15 @@
 #include "ops/arithmetic.hpp" // IWYU pragma: export
 #include "ops/transpose.hpp"  // IWYU pragma: export
 #include "ops/predicates.hpp" // IWYU pragma: export
+#include "ops/statistics.hpp" // IWYU pragma: export
 
 
-//#include "linalg/determinant.hpp"
+#include "linalg/determinant.hpp" // IWYU pragma: export
+#include "linalg/trace.hpp" // IWYU pragma: export
 //#include "linalg/inverse.hpp"
 //#include "linalg/decompositions.hpp"
 
 
 //#include "utils/io.hpp"
-#include "linalg/determinant.hpp" // IWYU pragma: export
+
 

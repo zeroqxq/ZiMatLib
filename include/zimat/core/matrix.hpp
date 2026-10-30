@@ -1,4 +1,5 @@
 #pragma once
+#include <cstddef>
 #include <vector>
 #include <algorithm>
 
@@ -19,22 +20,27 @@ namespace zimat {
         // constructors
         matrix();
         matrix(T1 rows, T1 cols, T1 base_numeric = 1);
-
-        // operators
+        
+        // base methods
         T& operator()(T1 rows, T1 cols);
         const T& operator()(T1 rows, T1 cols) const;
+
+        matrix& fill(const T& value);
+        void resize(T1 rows, T1 cols, T1 base_numeric = 1);
+        size_t size() const;
+
+        // linalg
+        T det() const;
+        T trace() const;
+
+        // ops
+        matrix t() const;
+        matrix transpose() const;
         matrix operator+(const matrix & other) const;
         matrix operator-(const matrix & other) const;
         matrix operator*(const matrix & other) const;
         matrix operator*(const T& other) const;
         matrix operator/(const T& other) const;
-        
-        // simple methods
-        matrix& fill(const T& value);
-        T det() const;
-        matrix t() const;
-        matrix transpose() const;
-        void resize(T1 rows, T1 cols, T1 base_numeric = 1);
 
         // bool methods
         bool empty() const;
@@ -45,7 +51,13 @@ namespace zimat {
 
         // statistic methods
         T sum() const;
-        T sum(matrix& matrix) const;
+        T sum(const matrix& matrix) const;
+
+        T max() const;
+        T max(const matrix& matrix) const;
+
+        T min() const;
+        T min(const matrix& matrix) const;
 
         // getters
         T1 get_rows() const;
@@ -157,6 +169,10 @@ namespace zimat {
         return *this;
     }
 
+    template <typename T, typename T1>  
+    size_t matrix<T,T1>::size() const {
+        return static_cast<size_t>(rows_) * static_cast<size_t>(cols_);
+    }
     
 
 }
