@@ -13,9 +13,9 @@ namespace zimat {
         return this->empty();
     }
 
-    template<typename T, typename T1>
-    bool matrix<T,T1>::zeros() const {
 
+    template<typename T, typename T1>
+    bool matrix<T,T1>::is_zeros() const {
         for (size_t i = 0; i < this->data_.size(); ++i) {
             if (this->data_[i] != 0) {
                 return false;
@@ -26,12 +26,12 @@ namespace zimat {
     }
 
     template<typename T, typename T1>
-    bool matrix<T,T1>::is_zeros() const {
-        return this->zeros();
+    bool matrix<T,T1>::zeroqxq() const {
+        return this->is_zeros();
     }
 
     template<typename T, typename T1>
-    bool matrix<T,T1>::zeroqxq() const {
-        return this->zeros();
+    bool matrix<T,T1>::is_square() const {
+        return rows_ == this->cols();
     }
 }

@@ -40,11 +40,14 @@ namespace zimat {
         bool empty() const;
         bool is_empty() const;
         bool zeroqxq() const; // ^_^ 
-        bool zeros() const;
         bool is_zeros() const;
         bool is_square() const;
 
-        // GETTERS AND SETTERS
+        // statistic methods
+        T sum() const;
+        T sum(matrix& matrix) const;
+
+        // getters
         T1 get_rows() const;
         T1 get_cols() const;
         T1 cols() const;
@@ -53,6 +56,8 @@ namespace zimat {
         const std::vector<T>& data() const;
         T1 get_base_numeric() const;
         T1 base_numeric() const;
+
+        // setters
         void set_base_numeric(T1 base_numeric);
 
     };     
