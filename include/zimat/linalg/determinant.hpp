@@ -1,4 +1,7 @@
+#pragma once
 #include "../core/matrix.hpp"
+#include <stdexcept>
+
 
 
 namespace zimat {
@@ -25,9 +28,9 @@ namespace zimat {
         
         }
         else {
-            return -1;
-        }
+            throw std::runtime_error("Unsupported matrix size");
 
-        // для вычисления определитиля выше 3 порядка придется использовать алгоритм барейса
+        // для вычисления определитиля выше 3 порядка планируется использовать алгоритм барейса (roadmap)
+        }
     }
-}
+}   

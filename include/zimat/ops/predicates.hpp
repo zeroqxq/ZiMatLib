@@ -1,3 +1,4 @@
+#pragma once
 #include "../core/matrix.hpp"
 #include <cstddef>
 
@@ -5,7 +6,7 @@ namespace zimat {
 
     template<typename T>
     bool matrix<T>::empty() const {
-        return this->rows() == 0 or this->cols() == 0;
+        return rows_ == 0 or cols_ == 0;
     }
 
     template<typename T>
@@ -32,6 +33,6 @@ namespace zimat {
 
     template<typename T>
     bool matrix<T>::is_square() const {
-        return rows_ == this->cols();
+        return rows_ == cols_;
     }
 }

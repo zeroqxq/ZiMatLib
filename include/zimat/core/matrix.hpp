@@ -180,7 +180,7 @@ namespace zimat {
 
     template <typename T>  
     size_t matrix<T>::size() const {
-        return static_cast<size_t>(rows_) * static_cast<size_t>(cols_);
+        return rows_*cols_;
     }
     
     template <typename T>
