@@ -59,9 +59,18 @@ namespace zimat {
         T min() const;
         T min(const matrix& matrix) const;
 
+        T max_in_row(size_t row) const;
+        T min_in_row(size_t row) const;
+        T max_in_col(size_t col) const;
+        T min_in_col(size_t col) const;
+
+        
+
         // getters
         size_t get_rows() const;
         size_t get_cols() const;
+        std::vector<T> get_row(size_t row) const;
+        std::vector<T> get_col(size_t col) const;
         size_t cols() const;
         size_t rows() const;
         const std::vector<T>& get_data() const;
@@ -174,6 +183,32 @@ namespace zimat {
         return static_cast<size_t>(rows_) * static_cast<size_t>(cols_);
     }
     
+    template <typename T>
+    std::vector<T> matrix<T>::get_row(size_t row) const {
+
+        row -= base_numeric_;
+
+        return std::vector<T>(
+            data_.begin() + row * cols_,
+            data_.begin() + (row + 1) * cols_
+        );
+    }
+
+    template <typename T>
+    std::vector<T> matrix<T>::get_col(size_t col) const {
+
+        col -= base_numeric_;
+
+        std::vector<T> result;
+        result.reserve(rows_);
+
+        for (size_t i = 0; i < rows_; ++i) {
+            result.push_back(data_[i * cols_ + col]);
+        }
+
+        return result;
+    }
+
 
 }
 

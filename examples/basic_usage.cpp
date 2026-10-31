@@ -66,6 +66,18 @@ int main(){
     std::cout << "|" << z(1,1) << " " << z(1,2) << "|" << std::endl;
     std::cout << "|" << z(2,1) << " " << z(2,2) << "|" << std::endl;
 
+    std::cout << z.sum() << std::endl;
+    std::cout << z.max() << std::endl;
+    std::cout << z.min() << std::endl;
+    std::cout << z.max_in_row(1) << std::endl;
+    std::cout << z.max_in_row(2) << std::endl;
+    std::cout << z.min_in_row(1) << std::endl;
+    std::cout << z.min_in_row(2) << std::endl;
+    std::cout << z.max_in_col(1) << std::endl;
+    std::cout << z.max_in_col(2) << std::endl;
+    std::cout << z.min_in_col(1) << std::endl;
+    std::cout << z.min_in_col(2) << std::endl; 
+
 
     return 0;
 }
