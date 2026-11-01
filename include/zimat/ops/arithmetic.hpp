@@ -1,6 +1,7 @@
 #pragma once
 #include "../core/matrix.hpp"
 #include <cstddef>
+#include <stdexcept>
 
 
 namespace zimat {
@@ -10,17 +11,16 @@ namespace zimat {
     {
 
         if (this->rows_ != other.rows_ or this->cols_ != other.cols_) {
+            throw std::invalid_argument("Matrix dimensions must match");
+        }
+
+        matrix<T> temp(this->rows_, this->cols_, this->base_numeric_);
+
+        for (size_t i = 0; i < temp.data_.size(); ++i) {
+            temp.data_[i] = this->data_[i] + other.data_[i];
+        }
+        return temp;
         
-        }
-        else {
-
-            matrix<T> temp(this->rows_, this->cols_, this->base_numeric_);
-
-            for (size_t i = 0; i < temp.data_.size(); ++i) {
-                temp.data_[i] = this->data_[i] + other.data_[i];
-            }
-            return temp;
-        }
     }
 
 
@@ -29,18 +29,16 @@ namespace zimat {
     {
 
         if (this->rows_ != other.rows_ or this->cols_ != other.cols_) {
+            throw std::invalid_argument("Matrix dimensions must match");
+        }
         
+        matrix<T> temp(this->rows_, this->cols_, this->base_numeric_);
+
+
+        for (size_t i = 0; i < temp.data_.size(); ++i) {
+            temp.data_[i] = this->data_[i] - other.data_[i];
         }
-
-        else {
-            matrix<T> temp(this->rows_, this->cols_, this->base_numeric_);
-
-
-            for (size_t i = 0; i < temp.data_.size(); ++i) {
-                temp.data_[i] = this->data_[i] - other.data_[i];
-            }
-            return temp;
-        }
+        return temp;
     }
 
 
@@ -49,25 +47,24 @@ namespace zimat {
     {
 
         if (this->cols_ != other.rows_) {
+            throw std::invalid_argument("Invalid matrix dimensions for multiplication");
+        }
         
-        }
-        else {
-            matrix<T> temp(this->rows_, other.cols_, this->base_numeric_);
+        matrix<T> temp(this->rows_, other.cols_, this->base_numeric_);
 
-            for (size_t i = 0; i < this->rows_; ++i) {
-                for (size_t j = 0; j < other.cols_; ++j) {
-                    T sum = T{};
+        for (size_t i = 0; i < this->rows_; ++i) {
+            for (size_t j = 0; j < other.cols_; ++j) {
+                T sum = T{};
 
-                    for (size_t k = 0; k < this->cols_; ++k) {
+                for (size_t k = 0; k < this->cols_; ++k) {
                         sum += this->data_[i * this->cols_ + k] * other.data_[k * other.cols_ + j];
-                    }
-
-                    temp.data_[i * other.cols_ + j] = sum;
                 }
-            }
 
-            return temp;
+                temp.data_[i * other.cols_ + j] = sum;
+            }
         }
+
+        return temp;
     }
     
 
