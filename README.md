@@ -4,16 +4,16 @@
 
 **Header-only библиотека на C++17 для создания и обработки матриц.**
 
-[![C++](https://img.shields.io/badge/C%2B%2B-17-blue.svg)](https://en.cppreference.com/w/cpp/17)
-[![Stars](https://img.shields.io/github/stars/zeroqxq/ZiMatLib?style=flat&color=blue)](https://github.com/zeroqxq/ZiMatLib/stargazers)
-[![License](https://img.shields.io/github/license/zeroqxq/ZiMatLib)](LICENSE)
-[![Version](https://img.shields.io/github/v/release/zeroqxq/ZiMatLib?label=version)](https://github.com/zeroqxq/ZiMatLib/releases/latest)
-[![Release Date](https://img.shields.io/github/release-date/zeroqxq/ZiMatLib?label=release%20date)](https://github.com/zeroqxq/ZiMatLib/releases/latest)
-[![Contributors](https://img.shields.io/github/contributors/zeroqxq/ZiMatLib?label=Contributors&color=blue)](https://github.com/zeroqxq/ZiMatLib/graphs/contributors)
+[![C++](https://img.shields.io/badge/C%2B%2B-17-2563EB.svg)](https://en.cppreference.com/w/cpp/17)
+[![Stars](https://img.shields.io/github/stars/zeroqxq/ZiMatLib?style=flat&color=2563EB)](https://github.com/zeroqxq/ZiMatLib/stargazers)
+[![License](https://img.shields.io/github/license/zeroqxq/ZiMatLib?color=2E8B57)](LICENSE)
+[![Version](https://img.shields.io/github/v/release/zeroqxq/ZiMatLib?label=version&color=2563EB)](https://github.com/zeroqxq/ZiMatLib/releases/latest)
+[![Release Date](https://img.shields.io/github/release-date/zeroqxq/ZiMatLib?label=release%20date&display_date=published_at&color=2563EB)](https://github.com/zeroqxq/ZiMatLib/releases/latest)
+[![Contributors](https://img.shields.io/github/contributors/zeroqxq/ZiMatLib?label=Contributors&color=2563EB)](https://github.com/zeroqxq/ZiMatLib/graphs/contributors)
 <br>
-[![Размер репозитория](https://img.shields.io/github/repo-size/zeroqxq/ZiMatLib?color=blue)](https://github.com/zeroqxq/ZiMatLib)
-[![Issues](https://img.shields.io/github/issues/zeroqxq/ZiMatLib)](https://github.com/zeroqxq/ZiMatLib/issues)
-[![Последний коммит](https://img.shields.io/github/last-commit/zeroqxq/ZiMatLib)](https://github.com/zeroqxq/ZiMatLib/commits/main)
+[![Размер репозитория](https://img.shields.io/github/repo-size/zeroqxq/ZiMatLib?color=2563EB)](https://github.com/zeroqxq/ZiMatLib)
+[![Issues](https://img.shields.io/github/issues/zeroqxq/ZiMatLib?color=2563EB)](https://github.com/zeroqxq/ZiMatLib/issues)
+[![Последний коммит](https://img.shields.io/github/last-commit/zeroqxq/ZiMatLib?color=2E8B57)](https://github.com/zeroqxq/ZiMatLib/commits/main)
 
 </div>
 
