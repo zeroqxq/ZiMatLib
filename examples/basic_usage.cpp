@@ -1,5 +1,6 @@
 #include "zimat/zimat.hpp"
 #include <iostream>
+#include <ostream>
 
 int main(){
     zimat::matrix<int> a(2,2);
@@ -78,6 +79,10 @@ int main(){
     std::cout << z.min_in_col(1) << std::endl;
     std::cout << z.min_in_col(2) << std::endl; 
 
+    zimat::matrix<int> k(2,2);
+    k.fill(1);
+    std::cout << k.trace() << std::endl;
 
     return 0;
 }
+// 

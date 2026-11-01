@@ -1,6 +1,7 @@
 #pragma once
 #include "../core/matrix.hpp"
 #include <numeric>
+#include <stdexcept>
 
 namespace zimat {
     
@@ -16,9 +17,12 @@ namespace zimat {
 
     template<typename T>
     T matrix<T>::max() const {
-        if (not (data_.empty())) {
-            return *std::max_element(data_.begin(), data_.end());
+        if (data_.empty()) {
+            throw std::domain_error("Cannot get max from empty matrix");
         }
+        
+        return *std::max_element(data_.begin(), data_.end());
+        
     }
 
     template<typename T>
@@ -28,9 +32,11 @@ namespace zimat {
 
     template<typename T>
     T matrix<T>::min() const {
-        if (not (data_.empty())) {
-            return *std::min_element(data_.begin(), data_.end());
+        if (data_.empty()) {
+            throw std::domain_error("Cannot get max from empty matrix");
         }
+
+        return *std::min_element(data_.begin(), data_.end());
     }
 
     template<typename T>
@@ -40,34 +46,40 @@ namespace zimat {
 
     template<typename T>
     T matrix<T>::max_in_row(size_t row) const {
-        if (not (data_.empty())) {
-            auto values = get_row(row);
-            return *std::max_element(values.begin(), values.end());
+        if (data_.empty()) {
+            throw std::domain_error("Cannot get max from empty matrix");
         }
+
+        auto values = get_row(row);
+        return *std::max_element(values.begin(), values.end());
+        
     }
 
     template<typename T>
     T matrix<T>::min_in_row(size_t row) const {
-        if (not (data_.empty())) {
-            auto values = get_row(row);
-            return *std::min_element(values.begin(), values.end());
+        if (data_.empty()) {
+            throw std::domain_error("Cannot get max from empty matrix");
         }
+        auto values = get_row(row);
+        return *std::min_element(values.begin(), values.end());
     }
 
     template<typename T>
     T matrix<T>::max_in_col(size_t col) const {
-        if (not (data_.empty())) {
-            auto values = get_col(col);
-            return *std::max_element(values.begin(), values.end());
+        if (data_.empty()) {
+            throw std::domain_error("Cannot get max from empty matrix");
         }
+        auto values = get_col(col);
+        return *std::max_element(values.begin(), values.end());
     }
 
     template<typename T>
     T matrix<T>::min_in_col(size_t col) const {
-        if (not (data_.empty())) {
-            auto values = get_col(col);
-            return *std::min_element(values.begin(), values.end());
+        if (data_.empty()) {
+            throw std::domain_error("Cannot get max from empty matrix");
         }
+        auto values = get_col(col);
+        return *std::min_element(values.begin(), values.end());
     }
 
 }

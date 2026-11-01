@@ -1,7 +1,7 @@
 #pragma once
 
 #define ZIMAT_VERSION_MAJOR 0
-#define ZIMAT_VERSION_MINOR 1
+#define ZIMAT_VERSION_MINOR 2
 #define ZIMAT_VERSION_PATCH 0
 
 
