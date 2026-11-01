@@ -1,6 +1,5 @@
 #include "zimat/zimat.hpp"
 #include <iostream>
-#include <memory>
 #include <ostream>
 
 int main(){

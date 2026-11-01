@@ -12,8 +12,9 @@ namespace zimat {
 
         T sum = {};
 
-        for (size_t i = 1; i <= rows_; ++i) {
-            sum += (*this)(i, i);
+        for (size_t i = 0; i < rows_; ++i) {
+            const size_t index = i + base_numeric_;
+            sum += (*this)(index, index);
         }
 
         return sum;

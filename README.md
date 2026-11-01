@@ -7,13 +7,14 @@
 [![C++](https://img.shields.io/badge/C%2B%2B-17-blue.svg)](https://en.cppreference.com/w/cpp/17)
 [![Stars](https://img.shields.io/github/stars/zeroqxq/ZiMatLib?style=flat&color=blue)](https://github.com/zeroqxq/ZiMatLib/stargazers)
 [![License](https://img.shields.io/github/license/zeroqxq/ZiMatLib)](LICENSE)
-[![Status](https://img.shields.io/badge/status-beta-orange.svg)](https://github.com/zeroqxq/ZiMatLib)
+[![Version](https://img.shields.io/badge/version-0.2.0-blue)](include/zimat/zimat.hpp)
 [![Размер репозитория](https://img.shields.io/github/repo-size/zeroqxq/ZiMatLib?color=blue)](https://github.com/zeroqxq/ZiMatLib)
-[![License](https://img.shields.io/github/license/zeroqxq/ZiMatLib)](LICENSE)
 [![Issues](https://img.shields.io/github/issues/zeroqxq/ZiMatLib)](https://github.com/zeroqxq/ZiMatLib/issues)
 [![Последний коммит](https://img.shields.io/github/last-commit/zeroqxq/ZiMatLib)](https://github.com/zeroqxq/ZiMatLib/commits/main)
 
 </div>
+
+Версия задаётся макросами `ZIMAT_VERSION_MAJOR`, `ZIMAT_VERSION_MINOR` и `ZIMAT_VERSION_PATCH` в `include/zimat/zimat.hpp`. CMake использует эти значения автоматически; после изменения макросов обновите бейдж командой `py -3 scripts/update_readme_version.py`.
 
 ZiMatLib предоставляет шаблон `zimat::matrix<T>` с настраиваемой базой индексации, арифметикой, транспонированием, статистическими методами и вычислением определителя для матриц до третьего порядка.
 
