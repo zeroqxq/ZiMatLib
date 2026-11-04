@@ -2,6 +2,7 @@
 #include <cstddef>
 #include <vector>
 #include <algorithm>
+#include <stdexcept>
 
 namespace zimat {
 
@@ -41,6 +42,8 @@ namespace zimat {
         matrix operator*(const matrix & other) const;
         matrix operator*(const T& other) const;
         matrix operator/(const T& other) const;
+        bool operator==(const matrix<T>& other) const;
+        bool operator!=(const matrix<T>& other) const;
 
         // bool methods
         bool empty() const;
@@ -92,20 +95,24 @@ namespace zimat {
     }
 
     template <typename T>
-    inline T& matrix<T>::operator()(size_t rows, size_t cols){
+    T& matrix<T>::operator()(size_t rows, size_t cols){
         auto index = (rows - base_numeric_) * cols_ + (cols - base_numeric_);
         return data_[index];
     }
 
     template <typename T>
-    inline const T& matrix<T>::operator()(size_t rows, size_t cols) const {
+    const T& matrix<T>::operator()(size_t rows, size_t cols) const {
+        if (rows < base_numeric_ or rows >= base_numeric_ + rows_ or cols < base_numeric_ or
+            cols >= base_numeric_ + cols_) {
+            throw std::out_of_range("Matrix index out of range");
+        }
         const auto index = (rows - base_numeric_) * cols_ + (cols - base_numeric_);
         return data_[index];
     }
 
 
     template <typename T>
-    inline void matrix<T>::resize(size_t rows, size_t cols, size_t base_numeric){
+    void matrix<T>::resize(size_t rows, size_t cols, size_t base_numeric){
         rows_ = rows;
         cols_ = cols;
         data_.resize(rows * cols);
@@ -185,6 +192,9 @@ namespace zimat {
     
     template <typename T>
     std::vector<T> matrix<T>::get_row(size_t row) const {
+        if (row < base_numeric_ || row >= rows_ + base_numeric_) {
+            throw std::out_of_range("Row index out of range");
+        }
 
         row -= base_numeric_;
 
@@ -196,6 +206,9 @@ namespace zimat {
 
     template <typename T>
     std::vector<T> matrix<T>::get_col(size_t col) const {
+        if (col < base_numeric_ || col >= rows_ + base_numeric_) {
+            throw std::out_of_range("Column index out of range");
+        }
 
         col -= base_numeric_;
 

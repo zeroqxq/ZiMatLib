@@ -86,7 +86,10 @@ namespace zimat {
     template <typename T>
     inline matrix<T> matrix<T>::operator/(const T& other) const
     {
-
+        if (other == T{}) {
+            throw std::domain_error("Division by zero");
+        }
+        
         matrix<T> temp(this->rows_, this->cols_, this->base_numeric_);
 
         for (size_t i = 0; i < temp.data_.size(); ++i){
@@ -94,6 +97,19 @@ namespace zimat {
         }
 
         return temp;
+    }
+    
+    template <typename T>
+    bool matrix<T>::operator==(const matrix<T>& other) const {
+        if (rows_ != other.rows_ or cols_ != other.cols_) {
+            return false;
+        }
+        return data_ == other.data_;
+    }
+
+    template <typename T>
+    bool matrix<T>::operator!=(const matrix<T>& other) const {
+        return !(*this == other);
     }
 
 
