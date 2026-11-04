@@ -33,7 +33,7 @@ namespace zimat {
     template<typename T>
     T matrix<T>::min() const {
         if (data_.empty()) {
-            throw std::domain_error("Cannot get max from empty matrix");
+            throw std::domain_error("Cannot get min from empty matrix");
         }
 
         return *std::min_element(data_.begin(), data_.end());
@@ -51,6 +51,11 @@ namespace zimat {
         }
 
         auto values = get_row(row);
+
+        if (values.empty()) {
+            throw std::domain_error("Cannot get max from empty row");
+        }
+
         return *std::max_element(values.begin(), values.end());
         
     }
@@ -58,9 +63,14 @@ namespace zimat {
     template<typename T>
     T matrix<T>::min_in_row(size_t row) const {
         if (data_.empty()) {
-            throw std::domain_error("Cannot get max from empty matrix");
+            throw std::domain_error("Cannot get min from empty matrix");
         }
         auto values = get_row(row);
+
+        if (values.empty()) {
+            throw std::domain_error("Cannot get min from empty row");
+        }
+
         return *std::min_element(values.begin(), values.end());
     }
 
@@ -70,15 +80,25 @@ namespace zimat {
             throw std::domain_error("Cannot get max from empty matrix");
         }
         auto values = get_col(col);
+
+        if (values.empty()) {
+            throw std::domain_error("Cannot get max from empty column");
+        }
+
         return *std::max_element(values.begin(), values.end());
     }
 
     template<typename T>
     T matrix<T>::min_in_col(size_t col) const {
         if (data_.empty()) {
-            throw std::domain_error("Cannot get max from empty matrix");
+            throw std::domain_error("Cannot get min from empty matrix");
         }
         auto values = get_col(col);
+
+        if (values.empty()) {
+            throw std::domain_error("Cannot get min from empty column");
+        }
+
         return *std::min_element(values.begin(), values.end());
     }
 
