@@ -96,6 +96,10 @@ namespace zimat {
 
     template <typename T>
     T& matrix<T>::operator()(size_t rows, size_t cols){
+        if (rows < base_numeric_ or rows >= base_numeric_ + rows_ or cols < base_numeric_ or
+            cols >= base_numeric_ + cols_) {
+            throw std::out_of_range("Matrix index out of range");
+        }
         auto index = (rows - base_numeric_) * cols_ + (cols - base_numeric_);
         return data_[index];
     }
@@ -206,7 +210,7 @@ namespace zimat {
 
     template <typename T>
     std::vector<T> matrix<T>::get_col(size_t col) const {
-        if (col < base_numeric_ || col >= rows_ + base_numeric_) {
+        if (col < base_numeric_ || col >= cols_ + base_numeric_) {
             throw std::out_of_range("Column index out of range");
         }
 
