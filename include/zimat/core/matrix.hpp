@@ -227,5 +227,23 @@ namespace zimat {
     }
 
 
+    // свободные функции aka конструкторы
+    template <typename T>
+    matrix<T> zeros(size_t rows, size_t cols) {
+        return matrix<T>(rows, cols);
+    }
+
+    template <typename T>
+    matrix<T> identity(size_t size) {
+    
+        matrix<T> result(size, size);
+
+        for (size_t i = 0; i < size; ++i)
+            result(i + 1, i + 1) = T{1};
+
+        return result;
+    }
+
+
 }
 

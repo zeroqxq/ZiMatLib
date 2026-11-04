@@ -1,3 +1,4 @@
+#include "zimat/core/matrix.hpp"
 #include "zimat/zimat.hpp"
 #include <iostream>
 #include <ostream>
@@ -83,6 +84,8 @@ int main(){
     k.fill(1);
     std::cout << k.trace() << std::endl;
 
+    zimat::matrix<int> j = zimat::zeros<int>(1,1);
+    zimat::matrix<int> l = zimat::identity<int>(7);
     return 0;
 }
 // 
