@@ -1,4 +1,3 @@
-#include "zimat/core/matrix.hpp"
 #include "zimat/zimat.hpp"
 #include <iostream>
 #include <ostream>
@@ -86,6 +85,9 @@ int main(){
 
     zimat::matrix<int> j = zimat::zeros<int>(1,1);
     zimat::matrix<int> l = zimat::identity<int>(7);
+
+    zimat::matrix<int> qxq = zimat::diagonal<int>({1,2,3});
+    std::cout << qxq(2,2) << std::endl;
+
     return 0;
 }
-// 

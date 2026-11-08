@@ -229,18 +229,40 @@ namespace zimat {
 
     // свободные функции aka конструкторы
     template <typename T>
-    matrix<T> zeros(size_t rows, size_t cols) {
-        return matrix<T>(rows, cols);
+    matrix<T> zeros(size_t rows, size_t cols, size_t base_numeric = 1) {
+        return matrix<T>(rows, cols, base_numeric);
     }
 
     template <typename T>
-    matrix<T> identity(size_t size) {
+    matrix<T> identity(size_t size, size_t base_numeric = 1) {
     
-        matrix<T> result(size, size);
+        matrix<T> result(size, size, base_numeric);
 
-        for (size_t i = 0; i < size; ++i)
-            result(i + 1, i + 1) = T{1};
+        for (size_t i = 0; i < size; ++i) {
+            const size_t index = base_numeric + i;
+            result(index, index) = T{1};
+        }
 
+        return result;
+    }
+
+    template <typename T>
+    matrix<T> ones(size_t rows, size_t cols, size_t base_numeric = 1) {
+    
+        matrix<T> result(rows, cols,base_numeric);
+        result.fill(T{1});
+        return result;
+    }
+
+    template <typename T>
+    matrix<T> diagonal(std::vector<T> diagonal, size_t base_numeric = 1 ) {
+        
+        matrix<T> result(diagonal.size(), diagonal.size(), base_numeric);
+
+        for (size_t i = 0; i < diagonal.size(); ++i){
+            size_t index = i + base_numeric;
+            result(index, index) = diagonal[i];
+        }
         return result;
     }
 
