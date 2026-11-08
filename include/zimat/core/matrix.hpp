@@ -3,6 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <stdexcept>
+#include <initializer_list>
 
 namespace zimat {
 
@@ -21,6 +22,10 @@ namespace zimat {
         // constructors
         matrix();
         matrix(size_t rows, size_t cols, size_t base_numeric = 1);
+        matrix(
+        std::initializer_list<std::initializer_list<T>> values,
+        size_t base_numeric = 1
+        );
         
         // base methods
         T& operator()(size_t rows, size_t cols);
@@ -266,6 +271,14 @@ namespace zimat {
         return result;
     }
 
+    template <typename T>
+    matrix<T>::matrix( std::initializer_list<std::initializer_list<T>> values,
+    size_t base_numeric) {
+
+        
+
+
+    }
 
 }
 
