@@ -275,10 +275,33 @@ namespace zimat {
     matrix<T>::matrix( std::initializer_list<std::initializer_list<T>> values,
     size_t base_numeric) {
 
-        
+        rows_ = values.size();
+
+        if (values.size() == 0)
+            cols_ = 0;
+        else {
+            cols_ = values.begin()->size();
+        }
+
+
+        base_numeric_ = base_numeric;
+
+        data_.reserve(rows_*cols_);
+
 
 
     }
+    /*
+
+    values:
+        {1,2,3},
+        {2,3,4}
+
+    values.size = 2
+    values.begin()->size() = 3;
+    data_.size = 2*3 = 6
+    
+    */
 
 }
 
