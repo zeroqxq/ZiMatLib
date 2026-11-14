@@ -288,7 +288,15 @@ namespace zimat {
 
         data_.reserve(rows_*cols_);
 
-
+        for (const auto& row : values) {
+            if (row.size() != cols_) {
+                throw std::invalid_argument(
+                    "All matrix rows must have the same size"
+                );
+            }
+        
+            data_.insert(data_.end(), row.begin(), row.end());
+        }
 
     }
     /*

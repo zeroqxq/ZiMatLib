@@ -11,11 +11,15 @@
 [![Release Date](https://img.shields.io/github/release-date/zeroqxq/ZiMatLib?label=release%20date&display_date=published_at&color=2563EB)](https://github.com/zeroqxq/ZiMatLib/releases/latest)
 [![Contributors](https://img.shields.io/github/contributors/zeroqxq/ZiMatLib?label=Contributors&color=2563EB)](https://github.com/zeroqxq/ZiMatLib/graphs/contributors)
 <br>
-[![Размер репозитория](https://img.shields.io/github/repo-size/zeroqxq/ZiMatLib?color=2563EB)](https://github.com/zeroqxq/ZiMatLib)
+[![Repo size](https://img.shields.io/github/repo-size/zeroqxq/ZiMatLib?color=2563EB)](https://github.com/zeroqxq/ZiMatLib)
 [![Issues](https://img.shields.io/github/issues/zeroqxq/ZiMatLib?color=2563EB)](https://github.com/zeroqxq/ZiMatLib/issues)
-[![Последний коммит](https://img.shields.io/github/last-commit/zeroqxq/ZiMatLib?color=2E8B57)](https://github.com/zeroqxq/ZiMatLib/commits/main)
+[![Latest commit · main](https://img.shields.io/github/last-commit/zeroqxq/ZiMatLib?label=Latest%20commit%20%C2%B7%20main&color=2E8B57)](https://github.com/zeroqxq/ZiMatLib/commits/main)
+[![Latest commit · development](https://img.shields.io/github/last-commit/zeroqxq/ZiMatLib/development?label=Latest%20commit%20%C2%B7%20development&color=2E8B57)](https://github.com/zeroqxq/ZiMatLib/commits/development)
+
 
 </div>
+
+https://github.com/zeroqxq/ZiMatLib/commits/works
 
 ZiMatLib предоставляет шаблон `zimat::matrix<T>` с настраиваемой базой индексации, арифметикой, транспонированием, статистическими методами и вычислением определителя для матриц до третьего порядка.
 
