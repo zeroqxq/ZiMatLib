@@ -1,110 +1,164 @@
-#include "zimat/core/matrix.hpp"
-#include "zimat/zimat.hpp"
+#include <zimat/zimat.hpp>
+
 #include <iostream>
-#include <ostream>
+#include <string>
+#include <vector>
 
-int main(){
-    zimat::matrix<int> a(2,2);
-    a = a.fill(1);
+template <typename T>
+void print_vector(const std::vector<T>& values, const std::string& title) {
+    std::cout << title << ": [ ";
 
-    zimat::matrix<int> b(2,2);
-    b = b.fill(2);
+    for (const auto& value : values) {
+        std::cout << value << ' ';
+    }
 
-    zimat::matrix<int> c = a + b;
-    zimat::matrix<int> d = c * 2; 
-    zimat::matrix<int> e = d / 2;
+    std::cout << "]\n";
+}
 
-    zimat::matrix<int> h(3,3);
-    h.fill(1);
+template <typename T>
+void print_matrix(const zimat::matrix<T>& matrix, const std::string& title) {
+    std::cout << "\n" << title << " (" << matrix.rows()
+              << " x " << matrix.cols()
+              << ", base = " << matrix.base_numeric() << ")\n";
 
-    zimat::matrix<int> z(2,2);
+    if (matrix.empty()) {
+        std::cout << "[empty]\n";
+        return;
+    }
 
-    z(1,1) = 1;
-    z(1,2) = 2;
-    z(2,1) = 3;
-    z(2,2) = 4;
-    z = z.transpose();
+    const std::size_t base = matrix.base_numeric();
 
+    for (std::size_t row = base; row < base + matrix.rows(); ++row) {
+        std::cout << "| ";
 
-    //output full matrix c
-    std::cout << "|" << c(1,1) << " " << c(1,2) << "|" << std::endl;
-    std::cout << "|" << c(2,1) << " " << c(2,2) << "|" << std::endl;
+        for (std::size_t col = base; col < base + matrix.cols(); ++col) {
+            std::cout << matrix(row, col) << ' ';
+        }
 
-    std::cout << std::endl;
+        std::cout << "|\n";
+    }
+}
 
-    //output full matrix d
-    std::cout << "|" << d(1,1) << " " << d(1,2) << "|" << std::endl;
-    std::cout << "|" << d(2,1) << " " << d(2,2) << "|" << std::endl;
+int main() {
+    std::cout << "=== ZiMatLib basic example ===\n";
 
-    std::cout << std::endl;
+    // 1. Создание матриц
+    zimat::matrix<int> empty_matrix;
+    zimat::matrix<int> filled(2, 3);
+    filled.fill(7);
 
-    //output full matrix e
-    std::cout << "|" << e(1,1) << " " << e(1,2) << "|" << std::endl;
-    std::cout << "|" << e(2,1) << " " << e(2,2) << "|" << std::endl;
-    
-    std::cout << std::endl;
-    
-    e(1,2) = 3;
-
-    //output full matrix e with changes
-    std::cout << "|" << e(1,1) << " " << e(1,2) << "|" << std::endl;
-    std::cout << "|" << e(2,1) << " " << e(2,2) << "|" << std::endl;
-
-    std::cout << std::endl;
-
-    //output determinant for e with changes
-    std::cout << e.det() << std::endl;
-
-
-    //output full matrix h with changes
-    std::cout << "|" << h(1,1) << " " << h(1,2) << " " << h(1,3) << "|" << std::endl;
-    std::cout << "|" << h(2,1) << " " << h(2,2) << " " << h(2,3) << "|" << std::endl;
-    std::cout << "|" << h(3,1) << " " << h(3,2) << " " << h(3,3) << "|" << std::endl;
-
-    //output determinant for h with changes
-    std::cout << h.det() << std::endl;
-
-    //output full matrix z with transpose
-    std::cout << "|" << z(1,1) << " " << z(1,2) << "|" << std::endl;
-    std::cout << "|" << z(2,1) << " " << z(2,2) << "|" << std::endl;
-
-    std::cout << z.sum() << std::endl;
-    std::cout << z.max() << std::endl;
-    std::cout << z.min() << std::endl;
-    std::cout << z.max_in_row(1) << std::endl;
-    std::cout << z.max_in_row(2) << std::endl;
-    std::cout << z.min_in_row(1) << std::endl;
-    std::cout << z.min_in_row(2) << std::endl;
-    std::cout << z.max_in_col(1) << std::endl;
-    std::cout << z.max_in_col(2) << std::endl;
-    std::cout << z.min_in_col(1) << std::endl;
-    std::cout << z.min_in_col(2) << std::endl; 
-
-    zimat::matrix<int> k(2,2);
-    k.fill(1);
-    std::cout << k.trace() << std::endl;
-
-    zimat::matrix<int> j = zimat::zeros<int>(1,1);
-    zimat::matrix<int> l = zimat::identity<int>(7);
-
-    zimat::matrix<int> qxq = zimat::diagonal<int>({1,2,3});
-    std::cout << qxq(2,2) << std::endl;
-
-    zimat::matrix<int> u {
-        {1,2,3},
-        {4,5,6},
-        {7,8,9}
+    zimat::matrix<int> a{
+        {1, 2, 3},
+        {4, 5, 6}
     };
 
-    zimat::matrix<int> p ( {
-        {1,2,3},
-        {4,5,6},
-        {7,8,9}
-        },
-        0
-    );
+    // Индексация с нуля.
+    zimat::matrix<int> zero_based({
+        {10, 20},
+        {30, 40}
+    }, 0);
 
-    std::cout << u(2,2) << std::endl;
+    print_matrix(empty_matrix, "Empty matrix");
+    print_matrix(filled, "Filled with 7");
+    print_matrix(a, "Matrix A");
+    print_matrix(zero_based, "Zero-based matrix");
+
+    // 2. Доступ к элементам через operator()
+    a(1, 2) = 20;
+    std::cout << "\nA(1, 2) = " << a(1, 2) << '\n';
+    std::cout << "zero_based(0, 1) = " << zero_based(0, 1) << '\n';
+
+    // 3. Свободные функции-конструкторы
+    const auto zeros = zimat::zeros<int>(2, 3);
+    const auto ones = zimat::ones<int>(2, 3);
+    const auto identity = zimat::identity<int>(3);
+    const auto diagonal = zimat::diagonal<int>({2, 4, 6});
+
+    print_matrix(zeros, "zeros<int>(2, 3)");
+    print_matrix(ones, "ones<int>(2, 3)");
+    print_matrix(identity, "identity<int>(3)");
+    print_matrix(diagonal, "diagonal<int>({2, 4, 6})");
+
+    // 4. Арифметика
+    const zimat::matrix<int> b{
+        {1, 2},
+        {3, 4}
+    };
+
+    const zimat::matrix<int> c{
+        {5, 6},
+        {7, 8}
+    };
+
+    print_matrix(b + c, "B + C");
+    print_matrix(c - b, "C - B");
+    print_matrix(b * c, "B * C");
+    print_matrix(b * 3, "B * 3");
+    print_matrix(c / 2, "C / 2");
+
+    // 5. Транспонирование: t() и transpose() — одинаковые операции
+    print_matrix(a.t(), "A.t()");
+    print_matrix(a.transpose(), "A.transpose()");
+
+    // 6. Линейная алгебра
+    const zimat::matrix<int> square{
+        {1, 2, 3},
+        {0, 4, 5},
+        {1, 0, 6}
+    };
+
+    print_matrix(square, "Square matrix");
+    std::cout << "det(square) = " << square.det() << '\n';
+    std::cout << "trace(square) = " << square.trace() << '\n';
+
+    // 7. Статистика
+    std::cout << "\n=== Statistics ===\n";
+    std::cout << "sum() = " << square.sum() << '\n';
+    std::cout << "sum(square) = " << square.sum(square) << '\n';
+    std::cout << "max() = " << square.max() << '\n';
+    std::cout << "max(square) = " << square.max(square) << '\n';
+    std::cout << "min() = " << square.min() << '\n';
+    std::cout << "min(square) = " << square.min(square) << '\n';
+    std::cout << "max_in_row(2) = " << square.max_in_row(2) << '\n';
+    std::cout << "min_in_row(2) = " << square.min_in_row(2) << '\n';
+    std::cout << "max_in_col(3) = " << square.max_in_col(3) << '\n';
+    std::cout << "min_in_col(3) = " << square.min_in_col(3) << '\n';
+
+    print_vector(square.get_row(2), "get_row(2)");
+    print_vector(square.get_col(3), "get_col(3)");
+    print_vector(square.get_data(), "get_data()");
+    print_vector(square.data(), "data()");
+
+    // 8. Свойства матриц
+    std::cout << "\n=== Properties ===\n";
+    std::cout << std::boolalpha;
+    std::cout << "empty_matrix.empty() = " << empty_matrix.empty() << '\n';
+    std::cout << "empty_matrix.is_empty() = " << empty_matrix.is_empty() << '\n';
+    std::cout << "zeros.is_zeros() = " << zeros.is_zeros() << '\n';
+    std::cout << "zeros.zeroqxq() = " << zeros.zeroqxq() << '\n';
+    std::cout << "square.is_square() = " << square.is_square() << '\n';
+    std::cout << "B == B = " << (b == b) << '\n';
+    std::cout << "B != C = " << (b != c) << '\n';
+
+    // 9. Размеры и база индексации
+    std::cout << "\n=== Size and indexing ===\n";
+    std::cout << "rows(): " << square.rows()
+              << ", get_rows(): " << square.get_rows() << '\n';
+    std::cout << "cols(): " << square.cols()
+              << ", get_cols(): " << square.get_cols() << '\n';
+    std::cout << "size(): " << square.size() << '\n';
+    std::cout << "base_numeric(): " << square.base_numeric()
+              << ", get_base_numeric(): " << square.get_base_numeric() << '\n';
+
+    // 10. resize() и set_base_numeric()
+    zimat::matrix<int> resized(2, 2);
+    resized.fill(1);
+    resized.resize(3, 2);
+    resized.fill(9);
+    print_matrix(resized, "After resize(3, 2)");
+
+    resized.set_base_numeric(0);
+    print_matrix(resized, "After set_base_numeric(0)");
 
     return 0;
 }
