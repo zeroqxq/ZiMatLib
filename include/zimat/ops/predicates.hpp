@@ -35,4 +35,96 @@ namespace zimat {
     bool matrix<T>::is_square() const {
         return rows_ == cols_;
     }
+
+    template<typename T>
+    bool matrix<T>::is_identity() const {
+        if (!is_square()) {
+            return false;
+        }
+
+        for (size_t row = 0; row < rows_; ++row) {
+            for (size_t col = 0; col < cols_; ++col) {
+                const T value = (*this)(row + base_numeric_, col + base_numeric_);
+                if (row != col and value != T{0})
+                    return false;
+                if (row == col and value != T{1})
+                    return false;
+            }
+        }
+
+        return true;
+    }
+
+    template<typename T>
+    bool matrix<T>::is_diagonal() const {
+        if (!is_square()) {
+            return false;
+        }
+        for (size_t row = 0; row < rows_; ++row) {
+            for (size_t col = 0; col < cols_; ++col) {
+                const T value = (*this)(row + base_numeric_, col + base_numeric_);
+                if (row != col and value != T{0})
+                    return false;
+            }
+        }
+
+    }
+
+    // template<typename T>
+    // bool matrix<T>::is_symmetric() const {
+    //     return *this == this->transpose();
+    // }
+    // Legacy; дольше , лишние выделения данных. Ниже оптималдьный метод
+
+    template <typename T>
+    bool matrix<T>::is_symmetric() const {
+        if (!is_square()) {
+            return false;
+        }
+
+        for (size_t row = 0; row < rows_; ++row) {
+            for (size_t col = row + 1; col < cols_; ++col) {
+                if ((*this)(row + base_numeric_, col + base_numeric_) !=
+                    (*this)(col + base_numeric_, row + base_numeric_)) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    template <typename T>
+    bool matrix<T>::is_upper_triangular() const {
+        if (!is_square()) {
+            return false;
+        }
+
+        for (size_t row = 1; row < rows_; ++row) {
+            for (size_t col = 0; col < row; ++col) {
+                if ((*this)(row + base_numeric_, col + base_numeric_) != T{}) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    template <typename T>
+    bool matrix<T>::is_lower_triangular() const {
+        if (!is_square()) {
+            return false;
+        }
+
+        for (size_t row = 0; row < rows_; ++row) {
+            for (size_t col = row + 1; col < cols_; ++col) {
+                if ((*this)(row + base_numeric_, col + base_numeric_) != T{}) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
 }

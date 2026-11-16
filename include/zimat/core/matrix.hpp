@@ -49,6 +49,9 @@ namespace zimat {
         matrix operator/(const T& other) const;
         bool operator==(const matrix<T>& other) const;
         bool operator!=(const matrix<T>& other) const;
+        matrix& operator+=(const matrix& other);
+        matrix& operator-=(const matrix& other);
+        matrix& operator*=(const T& scalar);
 
         // bool methods
         bool empty() const;
@@ -56,6 +59,11 @@ namespace zimat {
         bool zeroqxq() const; // ^_^ 
         bool is_zeros() const;
         bool is_square() const;
+        bool is_identity() const;
+        bool is_diagonal() const;
+        bool is_symmetric() const;
+        bool is_upper_triangular() const;
+        bool is_lower_triangular() const;
 
         // statistic methods
         T sum() const;
