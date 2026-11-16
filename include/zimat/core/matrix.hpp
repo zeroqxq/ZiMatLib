@@ -3,6 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <stdexcept>
+#include <initializer_list>
 
 namespace zimat {
 
@@ -21,7 +22,11 @@ namespace zimat {
         // constructors
         matrix();
         matrix(size_t rows, size_t cols, size_t base_numeric = 1);
-        
+        matrix(
+        std::initializer_list<std::initializer_list<T>> values,
+        size_t base_numeric = 1
+        );
+
         // base methods
         T& operator()(size_t rows, size_t cols);
         const T& operator()(size_t rows, size_t cols) const;
@@ -44,6 +49,9 @@ namespace zimat {
         matrix operator/(const T& other) const;
         bool operator==(const matrix<T>& other) const;
         bool operator!=(const matrix<T>& other) const;
+        matrix& operator+=(const matrix& other);
+        matrix& operator-=(const matrix& other);
+        matrix& operator*=(const T& scalar);
 
         // bool methods
         bool empty() const;
@@ -51,6 +59,11 @@ namespace zimat {
         bool zeroqxq() const; // ^_^ 
         bool is_zeros() const;
         bool is_square() const;
+        bool is_identity() const;
+        bool is_diagonal() const;
+        bool is_symmetric() const;
+        bool is_upper_triangular() const;
+        bool is_lower_triangular() const;
 
         // statistic methods
         T sum() const;
@@ -174,7 +187,7 @@ namespace zimat {
     {
         base_numeric_ = base_numeric;
     }
-    
+
     template <typename T>
     matrix<T>::matrix() 
     {
@@ -226,6 +239,85 @@ namespace zimat {
         return result;
     }
 
+
+    // свободные функции aka конструкторы
+    template <typename T>
+    matrix<T> zeros(size_t rows, size_t cols, size_t base_numeric = 1) {
+        return matrix<T>(rows, cols, base_numeric);
+    }
+
+    template <typename T>
+    matrix<T> identity(size_t size, size_t base_numeric = 1) {
+    
+        matrix<T> result(size, size, base_numeric);
+
+        for (size_t i = 0; i < size; ++i) {
+            const size_t index = base_numeric + i;
+            result(index, index) = T{1};
+        }
+
+        return result;
+    }
+
+    template <typename T>
+    matrix<T> ones(size_t rows, size_t cols, size_t base_numeric = 1) {
+    
+        matrix<T> result(rows, cols,base_numeric);
+        result.fill(T{1});
+        return result;
+    }
+
+    template <typename T>
+    matrix<T> diagonal(std::vector<T> diagonal, size_t base_numeric = 1 ) {
+
+        matrix<T> result(diagonal.size(), diagonal.size(), base_numeric);
+
+        for (size_t i = 0; i < diagonal.size(); ++i){
+            size_t index = i + base_numeric;
+            result(index, index) = diagonal[i];
+        }
+        return result;
+    }
+
+    template <typename T>
+    matrix<T>::matrix( std::initializer_list<std::initializer_list<T>> values,
+    size_t base_numeric) {
+
+        rows_ = values.size();
+
+        if (values.size() == 0)
+            cols_ = 0;
+        else {
+            cols_ = values.begin()->size();
+        }
+
+
+        base_numeric_ = base_numeric;
+
+        data_.reserve(rows_*cols_);
+
+        for (const auto& row : values) {
+            if (row.size() != cols_) {
+                throw std::invalid_argument(
+                    "All matrix rows must have the same size"
+                );
+            }
+
+            data_.insert(data_.end(), row.begin(), row.end());
+        }
+
+    }
+    /*
+
+    values:
+        {1,2,3},
+        {2,3,4}
+
+    values.size = 2
+    values.begin()->size() = 3;
+    data_.size = 2*3 = 6
+
+    */
 
 }
 

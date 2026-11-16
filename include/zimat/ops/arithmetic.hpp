@@ -20,7 +20,7 @@ namespace zimat {
             temp.data_[i] = this->data_[i] + other.data_[i];
         }
         return temp;
-        
+
     }
 
 
@@ -66,7 +66,7 @@ namespace zimat {
 
         return temp;
     }
-    
+
 
 
     template <typename T>
@@ -112,6 +112,39 @@ namespace zimat {
         return !(*this == other);
     }
 
+    template <typename T>
+    matrix<T>& matrix<T>::operator+=(const matrix<T>& other) {
+        if (rows_ != other.rows_ || cols_ != other.cols_) {
+            throw std::invalid_argument("Matrix dimensions must match");
+        }
 
+        for (size_t i = 0; i < data_.size(); ++i) {
+            data_[i] += other.data_[i];
+        }
+
+        return *this;
+    }
+
+    template <typename T>
+    matrix<T>& matrix<T>::operator-=(const matrix<T>& other) {
+        if (rows_ != other.rows_ || cols_ != other.cols_) {
+            throw std::invalid_argument("Matrix dimensions must match");
+        }
+
+        for (size_t i = 0; i < data_.size(); ++i) {
+            data_[i] -= other.data_[i];
+        }
+
+        return *this;
+    }
+
+    template <typename T>
+    matrix<T>& matrix<T>::operator*=(const T& scalar) {
+        for (auto& value : data_) {
+            value *= scalar;
+        }
+
+        return *this;
+    }
 
 }
