@@ -26,7 +26,7 @@ namespace zimat {
         std::initializer_list<std::initializer_list<T>> values,
         size_t base_numeric = 1
         );
-        
+
         // base methods
         T& operator()(size_t rows, size_t cols);
         const T& operator()(size_t rows, size_t cols) const;
@@ -187,7 +187,7 @@ namespace zimat {
     {
         base_numeric_ = base_numeric;
     }
-    
+
     template <typename T>
     matrix<T>::matrix() 
     {
@@ -269,7 +269,7 @@ namespace zimat {
 
     template <typename T>
     matrix<T> diagonal(std::vector<T> diagonal, size_t base_numeric = 1 ) {
-        
+
         matrix<T> result(diagonal.size(), diagonal.size(), base_numeric);
 
         for (size_t i = 0; i < diagonal.size(); ++i){
@@ -302,7 +302,7 @@ namespace zimat {
                     "All matrix rows must have the same size"
                 );
             }
-        
+
             data_.insert(data_.end(), row.begin(), row.end());
         }
 
@@ -316,7 +316,7 @@ namespace zimat {
     values.size = 2
     values.begin()->size() = 3;
     data_.size = 2*3 = 6
-    
+
     */
 
 }

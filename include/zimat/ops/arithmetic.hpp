@@ -20,7 +20,7 @@ namespace zimat {
             temp.data_[i] = this->data_[i] + other.data_[i];
         }
         return temp;
-        
+
     }
 
 
@@ -66,7 +66,7 @@ namespace zimat {
 
         return temp;
     }
-    
+
 
 
     template <typename T>
