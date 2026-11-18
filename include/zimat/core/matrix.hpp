@@ -56,7 +56,11 @@ namespace zimat {
         // bool methods
         bool empty() const;
         bool is_empty() const;
-        bool zeroqxq() const; // ^_^ 
+
+        [[deprecated("Use is_zeros() instead")]]
+        bool zeroqxq() const; // ^_^
+        
+
         bool is_zeros() const;
         bool is_square() const;
         bool is_identity() const;
@@ -67,12 +71,18 @@ namespace zimat {
 
         // statistic methods
         T sum() const;
+
+        [[deprecated("Use matrix.sum() instead")]]
         T sum(const matrix& matrix) const;
 
         T max() const;
+
+        [[deprecated("Use matrix.max() instead")]]
         T max(const matrix& matrix) const;
 
         T min() const;
+
+        [[deprecated("Use matrix.min() instead")]]
         T min(const matrix& matrix) const;
 
         T max_in_row(size_t row) const;
@@ -83,14 +93,22 @@ namespace zimat {
         
 
         // getters
+        [[deprecated("Use rows() instead")]]
         size_t get_rows() const;
+
+        [[deprecated("Use cols() instead")]]
         size_t get_cols() const;
+
         std::vector<T> get_row(size_t row) const;
         std::vector<T> get_col(size_t col) const;
         size_t cols() const;
         size_t rows() const;
+
+        [[deprecated("Use data() instead")]]
         const std::vector<T>& get_data() const;
         const std::vector<T>& data() const;
+
+        [[deprecated("Use base_numeric() instead")]]
         size_t get_base_numeric() const;
         size_t base_numeric() const;
 

@@ -8,6 +8,14 @@ namespace zimat {
 
     template<typename T>
     T matrix<T>::det() const {
+        if (!is_square()) {
+            throw std::invalid_argument("Determinant is only defined for square matrices");
+        }
+
+        if (rows_ == 0) {
+            return T{1};
+        }
+
         if (this->rows_ == 1 and this ->cols_ == 1){
             return data_[0];
         }
@@ -32,5 +40,6 @@ namespace zimat {
 
         // для вычисления определитиля выше 3 порядка планируется использовать алгоритм барейса (roadmap)
         }
+        
     }
 }   

@@ -14,6 +14,10 @@ namespace zimat {
             throw std::invalid_argument("Matrix dimensions must match");
         }
 
+        if (base_numeric_ != other.base_numeric_) {
+            throw std::invalid_argument("Matrix index bases must match");
+        }
+
         matrix<T> temp(this->rows_, this->cols_, this->base_numeric_);
 
         for (size_t i = 0; i < temp.data_.size(); ++i) {
@@ -30,6 +34,10 @@ namespace zimat {
 
         if (this->rows_ != other.rows_ or this->cols_ != other.cols_) {
             throw std::invalid_argument("Matrix dimensions must match");
+        }
+
+        if (base_numeric_ != other.base_numeric_) {
+            throw std::invalid_argument("Matrix index bases must match");
         }
         
         matrix<T> temp(this->rows_, this->cols_, this->base_numeric_);
@@ -49,7 +57,7 @@ namespace zimat {
         if (this->cols_ != other.rows_) {
             throw std::invalid_argument("Invalid matrix dimensions for multiplication");
         }
-        
+
         matrix<T> temp(this->rows_, other.cols_, this->base_numeric_);
 
         for (size_t i = 0; i < this->rows_; ++i) {
@@ -84,8 +92,7 @@ namespace zimat {
 
 
     template <typename T>
-    inline matrix<T> matrix<T>::operator/(const T& other) const
-    {
+    inline matrix<T> matrix<T>::operator/(const T& other) const {
         if (other == T{}) {
             throw std::domain_error("Division by zero");
         }
@@ -101,9 +108,12 @@ namespace zimat {
     
     template <typename T>
     bool matrix<T>::operator==(const matrix<T>& other) const {
-        if (rows_ != other.rows_ or cols_ != other.cols_) {
+        if (rows_ != other.rows_ ||
+            cols_ != other.cols_ ||
+            base_numeric_ != other.base_numeric_) {
             return false;
         }
+
         return data_ == other.data_;
     }
 
@@ -114,6 +124,10 @@ namespace zimat {
 
     template <typename T>
     matrix<T>& matrix<T>::operator+=(const matrix<T>& other) {
+        if (base_numeric_ != other.base_numeric_) {
+            throw std::invalid_argument("Matrix index bases must match");
+        }
+
         if (rows_ != other.rows_ || cols_ != other.cols_) {
             throw std::invalid_argument("Matrix dimensions must match");
         }
@@ -127,6 +141,10 @@ namespace zimat {
 
     template <typename T>
     matrix<T>& matrix<T>::operator-=(const matrix<T>& other) {
+        if (base_numeric_ != other.base_numeric_) {
+            throw std::invalid_argument("Matrix index bases must match");
+        }
+
         if (rows_ != other.rows_ || cols_ != other.cols_) {
             throw std::invalid_argument("Matrix dimensions must match");
         }
