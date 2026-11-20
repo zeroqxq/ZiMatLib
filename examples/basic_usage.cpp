@@ -114,11 +114,8 @@ int main() {
     // 7. Статистика
     std::cout << "\n=== Statistics ===\n";
     std::cout << "sum() = " << square.sum() << '\n';
-    std::cout << "sum(square) = " << square.sum(square) << '\n';
     std::cout << "max() = " << square.max() << '\n';
-    std::cout << "max(square) = " << square.max(square) << '\n';
     std::cout << "min() = " << square.min() << '\n';
-    std::cout << "min(square) = " << square.min(square) << '\n';
     std::cout << "max_in_row(2) = " << square.max_in_row(2) << '\n';
     std::cout << "min_in_row(2) = " << square.min_in_row(2) << '\n';
     std::cout << "max_in_col(3) = " << square.max_in_col(3) << '\n';
@@ -126,7 +123,6 @@ int main() {
 
     print_vector(square.get_row(2), "get_row(2)");
     print_vector(square.get_col(3), "get_col(3)");
-    print_vector(square.get_data(), "get_data()");
     print_vector(square.data(), "data()");
 
     // 8. Свойства матриц
@@ -135,20 +131,16 @@ int main() {
     std::cout << "empty_matrix.empty() = " << empty_matrix.empty() << '\n';
     std::cout << "empty_matrix.is_empty() = " << empty_matrix.is_empty() << '\n';
     std::cout << "zeros.is_zeros() = " << zeros.is_zeros() << '\n';
-    std::cout << "zeros.zeroqxq() = " << zeros.zeroqxq() << '\n';
     std::cout << "square.is_square() = " << square.is_square() << '\n';
     std::cout << "B == B = " << (b == b) << '\n';
     std::cout << "B != C = " << (b != c) << '\n';
 
     // 9. Размеры и база индексации
     std::cout << "\n=== Size and indexing ===\n";
-    std::cout << "rows(): " << square.rows()
-              << ", get_rows(): " << square.get_rows() << '\n';
-    std::cout << "cols(): " << square.cols()
-              << ", get_cols(): " << square.get_cols() << '\n';
+    std::cout << "rows(): " << square.rows() << '\n';
+    std::cout << "cols(): " << square.cols() << '\n';
     std::cout << "size(): " << square.size() << '\n';
-    std::cout << "base_numeric(): " << square.base_numeric()
-              << ", get_base_numeric(): " << square.get_base_numeric() << '\n';
+    std::cout << "base_numeric(): " << square.base_numeric() << '\n';
 
     // 10. resize() и set_base_numeric()
     zimat::matrix<int> resized(2, 2);
@@ -159,6 +151,5 @@ int main() {
 
     resized.set_base_numeric(0);
     print_matrix(resized, "After set_base_numeric(0)");
-
     return 0;
 }
