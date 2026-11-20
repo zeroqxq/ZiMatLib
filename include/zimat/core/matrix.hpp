@@ -145,14 +145,29 @@ namespace zimat {
         return data_[index];
     }
 
-
     template <typename T>
-    void matrix<T>::resize(size_t rows, size_t cols, size_t base_numeric){
+    void matrix<T>::resize(size_t rows, size_t cols, size_t base_numeric) {
+        if (cols != 0 && rows > data_.max_size() / cols) {
+            throw std::length_error("Matrix dimensions are too large");
+        }
+
+        std::vector<T> new_data(rows * cols);
+
+        const size_t copy_rows = std::min(rows_, rows);
+        const size_t copy_cols = std::min(cols_, cols);
+
+        for (size_t row = 0; row < copy_rows; ++row) {
+            for (size_t col = 0; col < copy_cols; ++col) {
+                new_data[row * cols + col] = data_[row * cols_ + col];
+            }
+        }
+
+        data_.swap(new_data);
         rows_ = rows;
         cols_ = cols;
-        data_.resize(rows * cols);
-        base_numeric_ = base_numeric;  
+        base_numeric_ = base_numeric;
     }
+
 
     template <typename T>
     size_t matrix<T>::get_rows() const {
