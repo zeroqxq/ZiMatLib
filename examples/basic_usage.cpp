@@ -120,6 +120,7 @@ int main() {
     std::cout << "min_in_row(2) = " << square.min_in_row(2) << '\n';
     std::cout << "max_in_col(3) = " << square.max_in_col(3) << '\n';
     std::cout << "min_in_col(3) = " << square.min_in_col(3) << '\n';
+    std::cout << "count(0) = " << square.count(0) << '\n';
 
     print_vector(square.get_row(2), "get_row(2)");
     print_vector(square.get_col(3), "get_col(3)");
