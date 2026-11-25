@@ -90,6 +90,8 @@ namespace zimat {
         T max_in_col(size_t col) const;
         T min_in_col(size_t col) const;
 
+        size_t count(const T& value) const;
+
         
 
         // getters

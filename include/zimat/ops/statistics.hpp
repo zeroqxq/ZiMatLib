@@ -102,4 +102,9 @@ namespace zimat {
         return *std::min_element(values.begin(), values.end());
     }
 
+    template <typename T>
+    size_t matrix<T>::count(const T& value) const {
+        return std::count(data_.begin(), data_.end(), value);
+    }
+
 }
