@@ -2,6 +2,7 @@
 #include "../core/matrix.hpp"
 #include <numeric>
 #include <stdexcept>
+#include <algorithm>
 
 namespace zimat {
     
